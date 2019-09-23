@@ -127,9 +127,12 @@ HTMLWidgets.widget({
     
     /* http://stackoverflow.com/questions/18445784/ */
     var chart = $("#" +el.id).highcharts();
-    var w = chart.renderTo.clientWidth; 
-    var h = chart.renderTo.clientHeight; 
-    chart.setSize(w, h); 
+    
+    if (chart && chart.options.chart.reflow === true) {
+      var w = chart.renderTo.clientWidth; 
+      var h = chart.renderTo.clientHeight; 
+      chart.setSize(w, h); 
+    }
 
   }
 
